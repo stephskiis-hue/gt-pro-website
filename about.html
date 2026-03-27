@@ -6,6 +6,32 @@
   <title>About Us | GT PRO — Winnipeg's Luxury Renovation Studio</title>
   <meta name="description" content="Meet the team behind Winnipeg's premier luxury renovation studio. 15+ years transforming Manitoba homes with precision craft and architectural integrity."/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
+  <link rel="canonical" href="https://gtproenterprises.ca/about.html"/>
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="GT PRO Enterprises"/>
+  <meta property="og:title" content="About Us | GT PRO — Winnipeg's Luxury Renovation Studio"/>
+  <meta property="og:description" content="Meet the team behind Winnipeg's premier luxury renovation studio. 15+ years transforming Manitoba homes with precision craft and architectural integrity."/>
+  <meta property="og:url" content="https://gtproenterprises.ca/about.html"/>
+  <meta property="og:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="About Us | GT PRO — Winnipeg's Luxury Renovation Studio"/>
+  <meta name="twitter:description" content="Meet the team behind Winnipeg's premier luxury renovation studio. 15+ years transforming Manitoba homes with precision craft and architectural integrity."/>
+  <meta name="twitter:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"GT PRO","image":"images/kitchen-full-granite.jpg","@id":"https://gtproenterprises.ca","url":"https://gtproenterprises.ca","telephone":"+1-204-990-4426","address":{"@type":"PostalAddress","streetAddress":"123 Innovation Drive","addressLocality":"Winnipeg","addressRegion":"MB","postalCode":"R3C 0A1","addressCountry":"CA"},"geo":{"@type":"GeoCoordinates","latitude":49.8951,"longitude":-97.1384},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},"priceRange":"$$$"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://gtproenterprises.ca/"},
+    {"@type":"ListItem","position":2,"name":"About","item":"https://gtproenterprises.ca/about.html"}
+  ]}
+  </script>
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -96,6 +122,10 @@
       transition: width 0.2s ease;
     }
     footer a:hover::after { width: 100%; }
+
+    #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    :focus-visible { outline: 2px solid #735a3a; outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary/20">
@@ -112,10 +142,11 @@
       <a href="services.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Services</a>
       <a href="gallery.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Gallery</a>
       <a href="about.html" class="font-label text-sm tracking-wide text-primary border-b-2 border-secondary pb-0.5 font-semibold">About</a>
+      <a href="blog.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Blog</a>
       <a href="quote.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Contact</a>
     </div>
     <a href="quote.html" class="hidden md:inline-flex bg-primary-gradient text-on-primary px-6 py-2.5 text-xs font-label font-bold uppercase tracking-widest rounded hover:opacity-90 transition-all">Request a Quote</a>
-    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-primary">
+    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-primary" aria-label="Open menu">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </div>
@@ -124,6 +155,7 @@
     <a href="services.html" class="block font-label text-sm text-on-surface-variant py-2">Services</a>
     <a href="gallery.html" class="block font-label text-sm text-on-surface-variant py-2">Gallery</a>
     <a href="about.html" class="block font-label text-sm text-primary font-semibold py-2">About</a>
+    <a href="blog.html" class="block font-label text-sm text-on-surface-variant py-2">Blog</a>
     <a href="quote.html" class="block font-label text-sm text-on-surface-variant py-2">Contact</a>
   </div>
 </nav>
@@ -143,17 +175,17 @@
         </p>
         <div class="flex items-center gap-10 mt-12">
           <div>
-            <span class="font-headline text-3xl text-primary font-bold">200+</span>
+            <span class="font-headline text-3xl text-primary font-bold stat-counter" data-target="200" data-suffix="+">200+</span>
             <span class="text-xs uppercase tracking-widest text-secondary font-label font-bold block mt-1">Projects</span>
           </div>
           <div class="h-10 w-px bg-outline-variant/40"></div>
           <div>
-            <span class="font-headline text-3xl text-primary font-bold">15+</span>
+            <span class="font-headline text-3xl text-primary font-bold stat-counter" data-target="15" data-suffix="+">15+</span>
             <span class="text-xs uppercase tracking-widest text-secondary font-label font-bold block mt-1">Years</span>
           </div>
           <div class="h-10 w-px bg-outline-variant/40"></div>
           <div>
-            <span class="font-headline text-3xl text-primary font-bold">100%</span>
+            <span class="font-headline text-3xl text-primary font-bold stat-counter" data-target="100" data-suffix="%">100%</span>
             <span class="text-xs uppercase tracking-widest text-secondary font-label font-bold block mt-1">Satisfaction</span>
           </div>
         </div>
@@ -162,9 +194,9 @@
         <div class="aspect-[4/5] bg-surface-container overflow-hidden rounded-lg ambient-shadow">
           <img
             src="images/kitchen-full-granite.jpg"
-            alt="GT PRO craftsman at work — precision woodworking and blueprint review"
+            alt="GT PRO luxury kitchen renovation Winnipeg — dark cabinetry with marble island"
             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-           loading="lazy"/>
+           fetchpriority="high"/>
         </div>
         <!-- Overlapping decorative stat block -->
         <div class="absolute -bottom-6 -left-6 bg-primary text-on-primary p-7 hidden md:block">
@@ -275,12 +307,12 @@
         </div>
         <div class="mt-10 flex items-center gap-8">
           <div>
-            <span class="font-headline text-2xl text-primary font-bold">$40M+</span>
+            <span class="font-headline text-2xl text-primary font-bold stat-counter" data-target="40" data-prefix="$" data-suffix="M+">$40M+</span>
             <span class="text-xs uppercase tracking-widest text-secondary font-label font-bold block mt-1">In Renovations</span>
           </div>
           <div class="h-8 w-px bg-outline-variant/40"></div>
           <div>
-            <span class="font-headline text-2xl text-primary font-bold">5★</span>
+            <span class="font-headline text-2xl text-primary font-bold stat-counter" data-target="5" data-suffix="★">5★</span>
             <span class="text-xs uppercase tracking-widest text-secondary font-label font-bold block mt-1">Google Rating</span>
           </div>
         </div>
@@ -416,6 +448,7 @@
       <ul class="space-y-2 text-sm text-on-primary-container font-light">
         <li><a href="about.html" class="hover:text-white transition-colors">About GT PRO</a></li>
         <li><a href="gallery.html" class="hover:text-white transition-colors">Project Gallery</a></li>
+        <li><a href="blog.html" class="hover:text-white transition-colors">Renovation Blog</a></li>
         <li><a href="quote.html" class="hover:text-white transition-colors">Request a Quote</a></li>
       </ul>
     </div>
@@ -444,13 +477,21 @@
   </div>
 </nav>
 
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top"
+  class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-40 w-11 h-11 bg-primary text-white rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 shadow-lg hover:bg-secondary"
+  style="transform: translateY(8px);">
+  <span class="material-symbols-outlined text-xl">arrow_upward</span>
+</button>
+
 <script>
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
   mobileMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    mobileMenu.classList.toggle('hidden');
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    mobileMenuBtn.setAttribute('aria-label', isHidden ? 'Open menu' : 'Close menu');
   });
 
   document.addEventListener('click', (e) => {
@@ -458,12 +499,40 @@
         !mobileMenu.contains(e.target) &&
         !mobileMenuBtn.contains(e.target)) {
       mobileMenu.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-label', 'Open menu');
     }
   });
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Back to top
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 300), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Count-up animation
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      el.textContent = prefix + Math.floor(eased * target) + suffix;
+      if (elapsed < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>

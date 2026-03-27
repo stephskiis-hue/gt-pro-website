@@ -7,6 +7,30 @@
   <meta name="description" content="Winnipeg's premier luxury interior renovation company. Expert kitchen, bathroom, and basement renovations. Serving Manitoba homeowners with $150k+ transformation projects."/>
   <meta name="keywords" content="Winnipeg interior renovations, luxury home remodeling Manitoba, professional basement finishing Winnipeg, kitchen renovation Winnipeg, bathroom renovation Manitoba"/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
+  <link rel="canonical" href="https://gtproenterprises.ca/"/>
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="GT PRO Enterprises"/>
+  <meta property="og:title" content="GT PRO | Luxury Interior Renovations Winnipeg"/>
+  <meta property="og:description" content="Winnipeg's premier luxury renovation studio — delivering precision-crafted kitchens, bathrooms, and basements for discerning Manitoba homeowners."/>
+  <meta property="og:url" content="https://gtproenterprises.ca/"/>
+  <meta property="og:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+  <meta property="og:image:width" content="1800"/>
+  <meta property="og:image:height" content="1200"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="GT PRO | Luxury Interior Renovations Winnipeg"/>
+  <meta name="twitter:description" content="Winnipeg's premier luxury renovation studio — delivering precision-crafted kitchens, bathrooms, and basements for discerning Manitoba homeowners."/>
+  <meta name="twitter:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://gtproenterprises.ca/"}
+  ]}
+  </script>
+
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
   {
@@ -167,6 +191,13 @@
       transition: width 0.2s ease;
     }
     footer a:hover::after { width: 100%; }
+
+    /* Back to top */
+    #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* Focus visible */
+    :focus-visible { outline: 2px solid #735a3a; outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
 
@@ -184,6 +215,7 @@
       <a href="services.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Services</a>
       <a href="gallery.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Gallery</a>
       <a href="about.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">About</a>
+      <a href="blog.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Blog</a>
       <a href="quote.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Contact</a>
     </div>
     <a href="quote.html" class="hidden md:inline-flex bg-primary-gradient text-on-primary px-6 py-2.5 text-xs font-label font-bold uppercase tracking-widest rounded hover:opacity-90 transition-all duration-300 items-center gap-2">
@@ -200,6 +232,7 @@
     <a href="services.html" class="block font-label text-sm text-on-surface-variant py-2">Services</a>
     <a href="gallery.html" class="block font-label text-sm text-on-surface-variant py-2">Gallery</a>
     <a href="about.html" class="block font-label text-sm text-on-surface-variant py-2">About</a>
+    <a href="blog.html" class="block font-label text-sm text-on-surface-variant py-2">Blog</a>
     <a href="quote.html" class="block font-label text-sm text-on-surface-variant py-2">Contact</a>
   </div>
 </nav>
@@ -213,7 +246,7 @@
       src="images/kitchen-full-granite.jpg"
       alt="Luxury kitchen renovation Winnipeg — dark navy cabinetry with marble waterfall island"
       class="w-full h-full object-cover"
-     loading="lazy"/>
+     fetchpriority="high"/>
     <div class="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/40 to-transparent"></div>
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full">
@@ -236,17 +269,17 @@
       </div>
       <div class="flex items-center gap-8 mt-14">
         <div class="flex flex-col">
-          <span class="text-white font-bold text-2xl font-headline">200+</span>
+          <span class="text-white font-bold text-2xl font-headline stat-counter" data-target="200" data-suffix="+">200+</span>
           <span class="text-white/60 text-xs uppercase tracking-widest">Projects Completed</span>
         </div>
         <div class="h-8 w-px bg-white/20"></div>
         <div class="flex flex-col">
-          <span class="text-white font-bold text-2xl font-headline">15+</span>
+          <span class="text-white font-bold text-2xl font-headline stat-counter" data-target="15" data-suffix="+">15+</span>
           <span class="text-white/60 text-xs uppercase tracking-widest">Years in Winnipeg</span>
         </div>
         <div class="h-8 w-px bg-white/20"></div>
         <div class="flex flex-col">
-          <span class="text-white font-bold text-2xl font-headline">100%</span>
+          <span class="text-white font-bold text-2xl font-headline stat-counter" data-target="100" data-suffix="%">100%</span>
           <span class="text-white/60 text-xs uppercase tracking-widest">Client Satisfaction</span>
         </div>
       </div>
@@ -471,6 +504,7 @@
       <ul class="space-y-2 text-sm text-on-primary-container font-light">
         <li><a href="about.html" class="hover:text-white transition-colors">About GT PRO</a></li>
         <li><a href="gallery.html" class="hover:text-white transition-colors">Project Gallery</a></li>
+        <li><a href="blog.html" class="hover:text-white transition-colors">Renovation Blog</a></li>
         <li><a href="quote.html" class="hover:text-white transition-colors">Request a Quote</a></li>
       </ul>
     </div>
@@ -508,6 +542,13 @@
   </div>
 </nav>
 
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top"
+  class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-40 w-11 h-11 bg-primary text-white rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 shadow-lg hover:bg-secondary"
+  style="transform: translateY(8px);">
+  <span class="material-symbols-outlined text-xl">arrow_upward</span>
+</button>
+
 <script>
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -515,7 +556,8 @@
 
   mobileMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    mobileMenu.classList.toggle('hidden');
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    mobileMenuBtn.setAttribute('aria-label', isHidden ? 'Open menu' : 'Close menu');
   });
 
   document.addEventListener('click', (e) => {
@@ -523,6 +565,7 @@
         !mobileMenu.contains(e.target) &&
         !mobileMenuBtn.contains(e.target)) {
       mobileMenu.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-label', 'Open menu');
     }
   });
 
@@ -535,6 +578,31 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
 
+  // Back to top
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 300), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Count-up animation
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      el.textContent = prefix + Math.floor(eased * target) + suffix;
+      if (elapsed < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>

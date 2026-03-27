@@ -6,6 +6,29 @@
   <title>Project Gallery | GT PRO — Winnipeg Renovation Portfolio</title>
   <meta name="description" content="Browse our portfolio of luxury kitchen, bathroom, and basement renovations completed across Winnipeg and Manitoba. See what's possible with GT PRO."/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
+  <link rel="canonical" href="https://gtproenterprises.ca/gallery.html"/>
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="GT PRO Enterprises"/>
+  <meta property="og:title" content="Project Gallery | GT PRO — Winnipeg Renovation Portfolio"/>
+  <meta property="og:description" content="Browse our portfolio of luxury kitchen, bathroom, and basement renovations completed across Winnipeg and Manitoba."/>
+  <meta property="og:url" content="https://gtproenterprises.ca/gallery.html"/>
+  <meta property="og:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Project Gallery | GT PRO — Winnipeg Renovation Portfolio"/>
+  <meta name="twitter:description" content="Browse our portfolio of luxury kitchen, bathroom, and basement renovations completed across Winnipeg and Manitoba."/>
+  <meta name="twitter:image" content="https://gtproenterprises.ca/images/kitchen-full-granite.jpg"/>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://gtproenterprises.ca/"},
+    {"@type":"ListItem","position":2,"name":"Gallery","item":"https://gtproenterprises.ca/gallery.html"}
+  ]}
+  </script>
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -65,6 +88,7 @@
 
     @media (max-width: 768px) {
       .g-lg, .g-sm, .g-med, .g-third { grid-column: span 12; }
+      #galleryGrid > * { height: 260px !important; }
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -133,6 +157,10 @@
       transition: width 0.2s ease;
     }
     footer a:hover::after { width: 100%; }
+
+    #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    :focus-visible { outline: 2px solid #735a3a; outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary/20">
@@ -149,10 +177,11 @@
       <a href="services.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Services</a>
       <a href="gallery.html" class="font-label text-sm tracking-wide text-primary border-b-2 border-secondary pb-0.5 font-semibold">Gallery</a>
       <a href="about.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">About</a>
+      <a href="blog.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Blog</a>
       <a href="quote.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Contact</a>
     </div>
     <a href="quote.html" class="hidden md:inline-flex bg-primary-gradient text-on-primary px-6 py-2.5 text-xs font-label font-bold uppercase tracking-widest rounded hover:opacity-90 transition-all">Request a Quote</a>
-    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-primary">
+    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-primary" aria-label="Open menu">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </div>
@@ -161,6 +190,7 @@
     <a href="services.html" class="block font-label text-sm text-on-surface-variant py-2">Services</a>
     <a href="gallery.html" class="block font-label text-sm text-primary font-semibold py-2">Gallery</a>
     <a href="about.html" class="block font-label text-sm text-on-surface-variant py-2">About</a>
+    <a href="blog.html" class="block font-label text-sm text-on-surface-variant py-2">Blog</a>
     <a href="quote.html" class="block font-label text-sm text-on-surface-variant py-2">Contact</a>
   </div>
 </nav>
@@ -301,19 +331,19 @@
   <section class="max-w-7xl mx-auto px-6 md:px-8 mt-20 reveal">
     <div class="bg-primary rounded-lg p-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div>
-        <p class="font-headline text-4xl text-white">200+</p>
+        <p class="font-headline text-4xl text-white stat-counter" data-target="200" data-suffix="+">200+</p>
         <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Projects Delivered</p>
       </div>
       <div>
-        <p class="font-headline text-4xl text-white">15+</p>
+        <p class="font-headline text-4xl text-white stat-counter" data-target="15" data-suffix="+">15+</p>
         <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Years Experience</p>
       </div>
       <div>
-        <p class="font-headline text-4xl text-white">$40M+</p>
+        <p class="font-headline text-4xl text-white stat-counter" data-target="40" data-prefix="$" data-suffix="M+">$40M+</p>
         <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">In Renovations</p>
       </div>
       <div>
-        <p class="font-headline text-4xl text-white">5★</p>
+        <p class="font-headline text-4xl text-white stat-counter" data-target="5" data-suffix="★">5★</p>
         <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Google Rating</p>
       </div>
     </div>
@@ -386,7 +416,7 @@
   <div class="flex flex-col items-center gap-4">
     <img id="lightboxImg" src="" alt="" class="rounded-lg" loading="lazy"/>
     <div class="text-center">
-      <p id="lightboxTitle" class="font-headline text-white text-lg"></p>
+      <p id="lightboxTitle" class="font-headline text-white text-lg" aria-live="polite"></p>
       <p id="lightboxMeta" class="font-label text-white/50 text-xs uppercase tracking-widest mt-1"></p>
     </div>
   </div>
@@ -395,6 +425,13 @@
   </button>
 </div>
 
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top"
+  class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-40 w-11 h-11 bg-primary text-white rounded-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 shadow-lg hover:bg-secondary"
+  style="transform: translateY(8px);">
+  <span class="material-symbols-outlined text-xl">arrow_upward</span>
+</button>
+
 <script>
   // Mobile menu
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -402,7 +439,8 @@
 
   mobileMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    mobileMenu.classList.toggle('hidden');
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    mobileMenuBtn.setAttribute('aria-label', isHidden ? 'Open menu' : 'Close menu');
   });
 
   document.addEventListener('click', (e) => {
@@ -410,6 +448,7 @@
         !mobileMenu.contains(e.target) &&
         !mobileMenuBtn.contains(e.target)) {
       mobileMenu.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-label', 'Open menu');
     }
   });
 
@@ -418,6 +457,32 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Back to top
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 300), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Count-up animation
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      el.textContent = prefix + Math.floor(eased * target) + suffix;
+      if (elapsed < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
 
   // Filter logic
   const filterBtns = document.querySelectorAll('.filter-btn');
