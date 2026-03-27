@@ -1,6 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+<style id="critical">
+  /* Mobile sticky nav — hardcoded so it renders before Tailwind loads */
+  @media (max-width: 767px) {
+    #mobile-sticky-nav {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%;
+      z-index: 9999;
+      background: #f9f9f9;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.08);
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    #mobile-sticky-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #mobile-sticky-nav a:first-child {
+      color: #03192e;
+      border-right: 1px solid rgba(0,0,0,0.08);
+      background: #f9f9f9;
+    }
+    #mobile-sticky-nav a:last-child {
+      color: #ffffff;
+      background: #03192e;
+    }
+    #mobile-sticky-nav a:last-child:active { opacity: 0.85; }
+    #mobile-sticky-nav a:first-child:active { background: #f0f0f0; }
+  }
+  @media (min-width: 768px) {
+    #mobile-sticky-nav { display: none !important; }
+  }
+</style>
+
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Project Gallery | GT PRO — Winnipeg Renovation Portfolio</title>
