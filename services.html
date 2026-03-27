@@ -2,6 +2,14 @@
 <html lang="en" class="scroll-smooth">
 <head>
 <style id="critical">
+  /* CTA buttons — hardcoded so they render correctly before Tailwind CDN loads */
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, #03192e 0%, #1a2e44 100%) !important;
+    color: #ffffff !important;
+    text-decoration: none;
+  }
+  .bg-primary-gradient * { color: #ffffff !important; }
+
   /* Mobile sticky nav — hardcoded so it renders before Tailwind loads */
   @media (max-width: 767px) {
     #mobile-sticky-nav {
