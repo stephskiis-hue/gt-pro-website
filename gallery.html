@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Gallery | GT PRO — Winnipeg Renovation Portfolio</title>
+  <meta name="description" content="Browse our portfolio of luxury kitchen, bathroom, and basement renovations completed across Winnipeg and Manitoba. See what's possible with GT PRO."/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#03192e", "primary-container": "#1a2e44", "on-primary": "#ffffff", "on-primary-container": "#8296b0",
+            "secondary": "#735a3a", "on-secondary": "#ffffff",
+            "surface": "#f9f9f9", "surface-container-lowest": "#ffffff", "surface-container-low": "#f3f3f3",
+            "surface-container": "#eeeeee", "surface-container-high": "#e8e8e8",
+            "on-surface": "#1a1c1c", "on-surface-variant": "#43474d", "outline": "#74777d", "outline-variant": "#c4c6cd",
+          },
+          fontFamily: { "headline": ["Noto Serif","serif"], "body": ["Manrope","sans-serif"], "label": ["Manrope","sans-serif"] },
+          borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-nav { background: rgba(249,249,249,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .bg-primary-gradient { background: linear-gradient(135deg, #03192e 0%, #1a2e44 100%); }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0.5rem); }
+
+    /* Gallery */
+    .gallery-item { overflow: hidden; cursor: pointer; position: relative; }
+    .gallery-item img { transition: transform 0.6s ease, filter 0.4s ease; filter: grayscale(15%); }
+    .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,25,46,0.85) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* Filter buttons */
+    .filter-btn { transition: all 0.25s ease; }
+    .filter-btn.active { background: #03192e; color: #ffffff; }
+    .filter-btn:not(.active):hover { background: #eeeeee; }
+
+    /* Lightbox */
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(3,25,46,0.95); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 0.25rem; }
+
+    /* Masonry-ish via CSS grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .g-lg { grid-column: span 8; }
+    .g-sm { grid-column: span 4; }
+    .g-med { grid-column: span 6; }
+    .g-third { grid-column: span 4; }
+
+    @media (max-width: 768px) {
+      .g-lg, .g-sm, .g-med, .g-third { grid-column: span 12; }
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Enhanced interactivity ── */
+    a, button { transition: all 0.2s ease; }
+
+    /* Nav link hover underline animation */
+    nav a:not(.bg-primary-gradient):not([href*="quote"]) {
+      position: relative;
+    }
+    nav a:not(.bg-primary-gradient)::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: #735a3a;
+      transition: width 0.25s ease;
+    }
+    nav a:not(.bg-primary-gradient):hover::after { width: 100%; }
+
+    /* Card lift on hover */
+    .ambient-shadow { transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    .ambient-shadow:hover {
+      box-shadow: 0 20px 60px rgba(3,25,46,0.12);
+      transform: translateY(-3px);
+    }
+
+    /* Image subtle zoom on hover */
+    .gallery-item { overflow: hidden; }
+    .gallery-img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+    .gallery-item:hover .gallery-img { transform: scale(1.04); filter: brightness(1.05); }
+
+    /* Button pulse on hover */
+    .bg-primary-gradient:hover {
+      box-shadow: 0 8px 25px rgba(3,25,46,0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Input focus glow */
+    .stitch-input:focus {
+      outline: none;
+      border-color: #735a3a;
+      box-shadow: 0 2px 0 0 #735a3a, 0 4px 12px rgba(115,90,58,0.1);
+    }
+
+    /* Service card selected state pulse */
+    .service-card.selected {
+      animation: selectedPulse 0.3s ease;
+    }
+    @keyframes selectedPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    /* Smooth section transitions */
+    .reveal { transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+
+    /* Footer link hover */
+    footer a { position: relative; }
+    footer a::after {
+      content: ''; position: absolute; bottom: -1px; left: 0;
+      width: 0; height: 1px; background: white;
+      transition: width 0.2s ease;
+    }
+    footer a:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary/20">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/10">
+  <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="flex-shrink-0" style="color:#735a3a"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="font-headline font-bold text-primary text-xl uppercase tracking-tighter">GT PRO</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Home</a>
+      <a href="services.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Services</a>
+      <a href="gallery.html" class="font-label text-sm tracking-wide text-primary border-b-2 border-secondary pb-0.5 font-semibold">Gallery</a>
+      <a href="about.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">About</a>
+      <a href="quote.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+    </div>
+    <a href="quote.html" class="hidden md:inline-flex bg-primary-gradient text-on-primary px-6 py-2.5 text-xs font-label font-bold uppercase tracking-widest rounded hover:opacity-90 transition-all">Request a Quote</a>
+    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-primary">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-surface-container-lowest border-t border-outline-variant/10 px-6 py-4 space-y-4">
+    <a href="index.html" class="block font-label text-sm text-on-surface-variant py-2">Home</a>
+    <a href="services.html" class="block font-label text-sm text-on-surface-variant py-2">Services</a>
+    <a href="gallery.html" class="block font-label text-sm text-primary font-semibold py-2">Gallery</a>
+    <a href="about.html" class="block font-label text-sm text-on-surface-variant py-2">About</a>
+    <a href="quote.html" class="block font-label text-sm text-on-surface-variant py-2">Contact</a>
+  </div>
+</nav>
+
+<main class="pt-24 pb-32 md:pb-20">
+
+  <!-- HERO -->
+  <header class="max-w-7xl mx-auto px-6 md:px-8 pt-10 pb-16">
+    <div class="flex flex-col md:flex-row items-end justify-between gap-8">
+      <div class="max-w-2xl">
+        <span class="font-label text-xs uppercase tracking-[0.3em] text-secondary mb-4 block">Portfolio</span>
+        <h1 class="font-headline text-5xl md:text-6xl lg:text-7xl leading-tight text-primary">Selected Works</h1>
+        <p class="mt-6 text-lg text-on-surface-variant font-light leading-relaxed max-w-xl">
+          A curated showcase of Winnipeg's finest interior transformations. Each project represents our commitment to architectural excellence and meticulous craft.
+        </p>
+      </div>
+      <div class="hidden md:block pb-2">
+        <span class="font-headline italic text-2xl text-secondary/40">Est. 2008</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTERS -->
+  <section class="max-w-7xl mx-auto px-6 md:px-8 mb-12 reveal">
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+      <button class="filter-btn active px-5 py-2 rounded-full font-label text-xs font-bold uppercase tracking-widest bg-primary text-white whitespace-nowrap" data-filter="all">All Projects</button>
+      <button class="filter-btn px-5 py-2 rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant bg-surface-container whitespace-nowrap" data-filter="kitchen">Kitchens</button>
+      <button class="filter-btn px-5 py-2 rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant bg-surface-container whitespace-nowrap" data-filter="bathroom">Bathrooms</button>
+      <button class="filter-btn px-5 py-2 rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant bg-surface-container whitespace-nowrap" data-filter="basement">Basements</button>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="max-w-7xl mx-auto px-6 md:px-8 reveal">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- 1: Kitchen large -->
+      <div class="g-lg gallery-item rounded" data-category="kitchen" style="height:460px;">
+        <img src="images/kitchen-sink-window.jpg" alt="Linden Woods Kitchen Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Kitchen</span>
+          <h3 class="font-headline text-xl text-white">Linden Woods Culinary Suite</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2024</p>
+        </div>
+      </div>
+
+      <!-- 2: Bathroom small vertical -->
+      <div class="g-sm gallery-item rounded" data-category="bathroom" style="height:460px;">
+        <img src="images/bathroom-dual-shower.jpg" alt="Tuxedo Bathroom Spa Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Bathroom</span>
+          <h3 class="font-headline text-lg text-white">Tuxedo Spa Retreat</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2024</p>
+        </div>
+      </div>
+
+      <!-- 3: Basement med -->
+      <div class="g-med gallery-item rounded" data-category="basement" style="height:380px;">
+        <img src="images/feature-fireplace-wall.jpg" alt="River Heights Basement Entertainment Room Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Basement</span>
+          <h3 class="font-headline text-xl text-white">River Heights Entertainment Suite</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2023</p>
+        </div>
+      </div>
+
+      <!-- 4: Full remodel med -->
+      <div class="g-med gallery-item rounded" data-category="bathroom" style="height:380px;">
+        <img src="images/kitchen-hexagon-splash.jpg" alt="Bridgwater Full Home Remodel Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Kitchen</span>
+          <h3 class="font-headline text-xl text-white">Bridgwater Estate Transformation</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2023</p>
+        </div>
+      </div>
+
+      <!-- 5: Kitchen third -->
+      <div class="g-third gallery-item rounded" data-category="kitchen" style="height:380px;">
+        <img src="images/kitchen-backsplash-mosaic.jpg" alt="Charleswood Kitchen Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Kitchen</span>
+          <h3 class="font-headline text-lg text-white">Charleswood Modern Kitchen</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2023</p>
+        </div>
+      </div>
+
+      <!-- 6: Bathroom third -->
+      <div class="g-third gallery-item rounded" data-category="bathroom" style="height:380px;">
+        <img src="images/bathroom-blue-mosaic.jpg" style="object-position:center top" alt="St. Vital Bathroom Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Bathroom</span>
+          <h3 class="font-headline text-lg text-white">St. Vital Ensuite Sanctuary</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2024</p>
+        </div>
+      </div>
+
+      <!-- 7: Full remodel third -->
+      <div class="g-third gallery-item rounded" data-category="bathroom" style="height:380px;">
+        <img src="images/bathroom-encaustic.jpg" alt="Waverley West Full Home Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Bathroom</span>
+          <h3 class="font-headline text-lg text-white">Waverley West Open Concept</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2023</p>
+        </div>
+      </div>
+
+      <!-- 8: Basement wide -->
+      <div class="g-lg gallery-item rounded" data-category="basement" style="height:380px;">
+        <img src="images/bathroom-white-vanity.jpg" style="object-position:center top" alt="Fort Garry Bathroom Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Basement</span>
+          <h3 class="font-headline text-xl text-white">Fort Garry Legal Suite Development</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2024</p>
+        </div>
+      </div>
+
+      <!-- 9: Kitchen sm -->
+      <div class="g-sm gallery-item rounded" data-category="kitchen" style="height:380px;">
+        <img src="images/kitchen-marble-subway.jpg" alt="North Kildonan Kitchen Renovation Winnipeg" class="w-full h-full object-cover" loading="lazy"/>
+        <div class="gallery-overlay">
+          <span class="inline-block bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest text-white rounded-full mb-2 w-fit">Kitchen</span>
+          <h3 class="font-headline text-lg text-white">Kildonan Galley Kitchen</h3>
+          <p class="font-label text-xs text-white/70 mt-1 uppercase tracking-widest">Winnipeg, MB · 2022</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- No results message -->
+    <div id="noResults" class="hidden text-center py-20">
+      <span class="material-symbols-outlined text-4xl text-outline-variant mb-4">search_off</span>
+      <p class="font-headline text-xl text-primary">No projects in this category yet.</p>
+      <p class="text-on-surface-variant text-sm mt-2">Check back soon — we're always adding new work.</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="max-w-7xl mx-auto px-6 md:px-8 mt-20 reveal">
+    <div class="bg-primary rounded-lg p-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-headline text-4xl text-white">200+</p>
+        <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Projects Delivered</p>
+      </div>
+      <div>
+        <p class="font-headline text-4xl text-white">15+</p>
+        <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Years Experience</p>
+      </div>
+      <div>
+        <p class="font-headline text-4xl text-white">$40M+</p>
+        <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">In Renovations</p>
+      </div>
+      <div>
+        <p class="font-headline text-4xl text-white">5★</p>
+        <p class="font-label text-xs uppercase tracking-widest text-on-primary-container mt-2">Google Rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-3xl mx-auto px-6 md:px-8 text-center py-24 reveal">
+    <span class="text-secondary font-label font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Start Your Project</span>
+    <h2 class="font-headline text-4xl text-primary mb-6">Inspired?<br/><span class="italic font-normal">Let's build yours.</span></h2>
+    <p class="text-on-surface-variant mb-10">Get a no-obligation quote for your Winnipeg renovation within 72 hours.</p>
+    <a href="quote.html" class="inline-flex items-center gap-3 bg-primary-gradient text-on-primary px-10 py-5 rounded font-label font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">
+      Request a Free Quote
+      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-primary text-on-primary border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-12 flex flex-col md:flex-row justify-between gap-8">
+    <div>
+      <span class="font-headline font-bold text-lg uppercase tracking-tighter block mb-2">GT PRO</span>
+      <p class="text-on-primary-container text-sm font-light">Winnipeg, Manitoba — Luxury Interior Renovations</p>
+      <p class="text-on-primary-container text-xs mt-4">© 2011 GT PRO Enterprises</p>
+    </div>
+    <div class="flex gap-12">
+      <div>
+        <h4 class="text-xs font-label font-bold uppercase tracking-widest text-secondary mb-3">Navigate</h4>
+        <ul class="space-y-2 text-sm text-on-primary-container font-light">
+          <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="quote.html" class="hover:text-white transition-colors">Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-label font-bold uppercase tracking-widest text-secondary mb-3">Contact</h4>
+        <ul class="space-y-2 text-sm text-on-primary-container font-light">
+          <li><a href="tel:+12049904426" class="hover:text-white transition-colors">(204) 990-4426</a></li>
+          <li><a href="mailto:tavaracci@gmail.com" class="hover:text-white transition-colors">tavaracci@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY NAV -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest pb-safe shadow-[0_-4px_30px_rgba(0,0,0,0.08)] border-t border-outline-variant/20">
+  <div class="grid grid-cols-2 divide-x divide-outline-variant/20">
+    <a href="tel:+12049904426" class="flex items-center justify-center gap-2 py-4 text-primary font-label font-bold text-xs uppercase tracking-widest">
+      <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">call</span>
+      Call Now
+    </a>
+    <a href="quote.html" class="flex items-center justify-center gap-2 py-4 bg-primary-gradient text-white font-label font-bold text-xs uppercase tracking-widest">
+      <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">request_quote</span>
+      Get a Quote
+    </a>
+  </div>
+</nav>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+  <button id="lightboxClose" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors z-10" aria-label="Close">
+    <span class="material-symbols-outlined text-4xl">close</span>
+  </button>
+  <button id="lightboxPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10" aria-label="Previous">
+    <span class="material-symbols-outlined text-4xl">chevron_left</span>
+  </button>
+  <div class="flex flex-col items-center gap-4">
+    <img id="lightboxImg" src="" alt="" class="rounded-lg" loading="lazy"/>
+    <div class="text-center">
+      <p id="lightboxTitle" class="font-headline text-white text-lg"></p>
+      <p id="lightboxMeta" class="font-label text-white/50 text-xs uppercase tracking-widest mt-1"></p>
+    </div>
+  </div>
+  <button id="lightboxNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10" aria-label="Next">
+    <span class="material-symbols-outlined text-4xl">chevron_right</span>
+  </button>
+</div>
+
+<script>
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.classList.contains('hidden') &&
+        !mobileMenu.contains(e.target) &&
+        !mobileMenuBtn.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Filter logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('#galleryGrid > [data-category]');
+  const noResults = document.getElementById('noResults');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+      filterBtns.forEach(b => b.classList.add('text-on-surface-variant', 'bg-surface-container'));
+      btn.classList.add('active', 'bg-primary', 'text-white');
+      btn.classList.remove('text-on-surface-variant', 'bg-surface-container');
+
+      const filter = btn.dataset.filter;
+      let visibleCount = 0;
+      galleryItems.forEach(item => {
+        const show = filter === 'all' || item.dataset.category === filter;
+        item.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxMeta = document.getElementById('lightboxMeta');
+  let currentIndex = 0;
+  let visibleItems = [];
+
+  function openLightbox(index) {
+    visibleItems = Array.from(document.querySelectorAll('#galleryGrid > [data-category]:not([style*="display: none"])'));
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightbox() {
+    const item = visibleItems[currentIndex];
+    if (!item) return;
+    const img = item.querySelector('img');
+    const title = item.querySelector('.font-headline');
+    const meta = item.querySelector('.font-label');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxTitle.textContent = title ? title.textContent : '';
+    lightboxMeta.textContent = meta ? meta.textContent : '';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach((item, idx) => {
+    item.addEventListener('click', () => openLightbox(idx));
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    updateLightbox();
+  });
+  document.getElementById('lightboxNext').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % visibleItems.length;
+    updateLightbox();
+  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length; updateLightbox(); }
+    if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visibleItems.length; updateLightbox(); }
+  });
+</script>
+</body>
+</html>

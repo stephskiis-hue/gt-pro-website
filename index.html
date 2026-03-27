@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GT PRO | Luxury Interior Renovations Winnipeg</title>
+  <meta name="description" content="Winnipeg's premier luxury interior renovation company. Expert kitchen, bathroom, and basement renovations. Serving Manitoba homeowners with $150k+ transformation projects."/>
+  <meta name="keywords" content="Winnipeg interior renovations, luxury home remodeling Manitoba, professional basement finishing Winnipeg, kitchen renovation Winnipeg, bathroom renovation Manitoba"/>
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "GT PRO",
+    "image": "images/kitchen-full-granite.jpg",
+    "@id": "https://gtproenterprises.ca",
+    "url": "https://gtproenterprises.ca",
+    "telephone": "+1-204-990-4426",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Innovation Drive",
+      "addressLocality": "Winnipeg",
+      "addressRegion": "MB",
+      "postalCode": "R3C 0A1",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.8951,
+      "longitude": -97.1384
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "sameAs": [],
+    "priceRange": "$$$"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#03192e",
+            "primary-container": "#1a2e44",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#8296b0",
+            "secondary": "#735a3a",
+            "secondary-container": "#fddab2",
+            "on-secondary": "#ffffff",
+            "surface": "#f9f9f9",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f3f3f3",
+            "surface-container": "#eeeeee",
+            "surface-container-high": "#e8e8e8",
+            "surface-container-highest": "#e2e2e2",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#43474d",
+            "outline": "#74777d",
+            "outline-variant": "#c4c6cd",
+            "inverse-surface": "#2f3131",
+          },
+          fontFamily: {
+            "headline": ["Noto Serif", "Georgia", "serif"],
+            "body": ["Manrope", "sans-serif"],
+            "label": ["Manrope", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "9999px",
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .ambient-shadow { box-shadow: 0 10px 30px -5px rgba(26,28,28,0.06); }
+    .glass-nav { background: rgba(249,249,249,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .bg-primary-gradient { background: linear-gradient(135deg, #03192e 0%, #1a2e44 100%); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Mobile bottom nav */
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0.5rem); }
+
+    /* Gallery hover */
+    .gallery-img { filter: grayscale(15%); transition: filter 0.5s ease, transform 0.6s ease; }
+    .gallery-item:hover .gallery-img { filter: grayscale(0%); transform: scale(1.04); }
+
+    /* Number accent */
+    .step-num { font-size: 5rem; line-height: 1; color: rgba(196,198,205,0.25); font-family: 'Noto Serif', serif; font-weight: 700; }
+
+    /* ── Enhanced interactivity ── */
+    a, button { transition: all 0.2s ease; }
+
+    /* Nav link hover underline animation */
+    nav a:not(.bg-primary-gradient):not([href*="quote"]) {
+      position: relative;
+    }
+    nav a:not(.bg-primary-gradient)::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: #735a3a;
+      transition: width 0.25s ease;
+    }
+    nav a:not(.bg-primary-gradient):hover::after { width: 100%; }
+
+    /* Card lift on hover */
+    .ambient-shadow { transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    .ambient-shadow:hover {
+      box-shadow: 0 20px 60px rgba(3,25,46,0.12);
+      transform: translateY(-3px);
+    }
+
+    /* Image subtle zoom on hover */
+    .gallery-item { overflow: hidden; }
+    .gallery-img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+    .gallery-item:hover .gallery-img { transform: scale(1.04); filter: brightness(1.05); }
+
+    /* Button pulse on hover */
+    .bg-primary-gradient:hover {
+      box-shadow: 0 8px 25px rgba(3,25,46,0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Input focus glow */
+    .stitch-input:focus {
+      outline: none;
+      border-color: #735a3a;
+      box-shadow: 0 2px 0 0 #735a3a, 0 4px 12px rgba(115,90,58,0.1);
+    }
+
+    /* Service card selected state pulse */
+    .service-card.selected {
+      animation: selectedPulse 0.3s ease;
+    }
+    @keyframes selectedPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    /* Smooth section transitions */
+    .reveal { transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+
+    /* Footer link hover */
+    footer a { position: relative; }
+    footer a::after {
+      content: ''; position: absolute; bottom: -1px; left: 0;
+      width: 0; height: 1px; background: white;
+      transition: width 0.2s ease;
+    }
+    footer a:hover::after { width: 100%; }
+  </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body selection:bg-secondary/20 antialiased">
+
+<!-- ═══════════════════════════════════════════ NAV ═══ -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/10">
+  <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="flex-shrink-0" style="color:#735a3a"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="font-headline font-bold text-primary text-xl uppercase tracking-tighter">GT PRO</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-label text-sm tracking-wide text-primary border-b-2 border-secondary pb-0.5 font-semibold">Home</a>
+      <a href="services.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Services</a>
+      <a href="gallery.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Gallery</a>
+      <a href="about.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">About</a>
+      <a href="quote.html" class="font-label text-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors duration-300">Contact</a>
+    </div>
+    <a href="quote.html" class="hidden md:inline-flex bg-primary-gradient text-on-primary px-6 py-2.5 text-xs font-label font-bold uppercase tracking-widest rounded hover:opacity-90 transition-all duration-300 items-center gap-2">
+      Request a Quote
+    </a>
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-surface-container-lowest border-t border-outline-variant/10 px-6 py-4 space-y-4">
+    <a href="index.html" class="block font-label text-sm text-primary font-semibold py-2">Home</a>
+    <a href="services.html" class="block font-label text-sm text-on-surface-variant py-2">Services</a>
+    <a href="gallery.html" class="block font-label text-sm text-on-surface-variant py-2">Gallery</a>
+    <a href="about.html" class="block font-label text-sm text-on-surface-variant py-2">About</a>
+    <a href="quote.html" class="block font-label text-sm text-on-surface-variant py-2">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════ HERO ═══ -->
+<section class="relative h-screen min-h-[640px] flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="images/kitchen-full-granite.jpg"
+      alt="Luxury kitchen renovation Winnipeg — dark navy cabinetry with marble waterfall island"
+      class="w-full h-full object-cover"
+     loading="lazy"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/40 to-transparent"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full">
+    <div class="max-w-2xl">
+      <span class="inline-block h-px w-10 bg-secondary mb-8 align-middle"></span>
+      <span class="font-label text-white/70 text-xs uppercase tracking-[0.3em] mb-4 block">Winnipeg Interior Renovations</span>
+      <h1 class="font-headline text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
+        Your Home,<br/><span class="italic font-normal">Reimagined.</span>
+      </h1>
+      <p class="text-white/85 text-lg md:text-xl font-light mb-10 max-w-lg leading-relaxed">
+        Winnipeg's premier luxury renovation studio — delivering precision-crafted kitchens, bathrooms, and basements for discerning homeowners across Manitoba.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="quote.html" class="bg-primary-gradient text-on-primary px-10 py-4 rounded font-label font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all text-center">
+          Get a Free Quote
+        </a>
+        <a href="gallery.html" class="border border-white/30 backdrop-blur-sm text-white px-10 py-4 rounded font-label font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all text-center">
+          View Portfolio
+        </a>
+      </div>
+      <div class="flex items-center gap-8 mt-14">
+        <div class="flex flex-col">
+          <span class="text-white font-bold text-2xl font-headline">200+</span>
+          <span class="text-white/60 text-xs uppercase tracking-widest">Projects Completed</span>
+        </div>
+        <div class="h-8 w-px bg-white/20"></div>
+        <div class="flex flex-col">
+          <span class="text-white font-bold text-2xl font-headline">15+</span>
+          <span class="text-white/60 text-xs uppercase tracking-widest">Years in Winnipeg</span>
+        </div>
+        <div class="h-8 w-px bg-white/20"></div>
+        <div class="flex flex-col">
+          <span class="text-white font-bold text-2xl font-headline">100%</span>
+          <span class="text-white/60 text-xs uppercase tracking-widest">Client Satisfaction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce">
+    <span class="h-8 w-px bg-white/30"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TRUST BAR ═══ -->
+<section class="bg-primary py-5 overflow-hidden">
+  <div class="flex items-center gap-12 px-8 max-w-7xl mx-auto flex-wrap justify-center md:justify-between">
+    <div class="flex items-center gap-3 text-white/80">
+      <span class="material-symbols-outlined text-secondary">verified</span>
+      <span class="font-label text-xs uppercase tracking-widest">Licensed & Insured</span>
+    </div>
+    <div class="h-4 w-px bg-white/20 hidden md:block"></div>
+    <div class="flex items-center gap-3 text-white/80">
+      <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+      <span class="font-label text-xs uppercase tracking-widest">Manitoba Home Builder</span>
+    </div>
+    <div class="h-4 w-px bg-white/20 hidden md:block"></div>
+    <div class="flex items-center gap-3 text-white/80">
+      <span class="material-symbols-outlined text-secondary">star</span>
+      <span class="font-label text-xs uppercase tracking-widest">5-Star Google Rated</span>
+    </div>
+    <div class="h-4 w-px bg-white/20 hidden md:block"></div>
+    <div class="flex items-center gap-3 text-white/80">
+      <span class="material-symbols-outlined text-secondary">handshake</span>
+      <span class="font-label text-xs uppercase tracking-widest">Fixed-Price Guarantee</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SERVICES OVERVIEW ═══ -->
+<section class="py-28 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div class="max-w-xl">
+        <span class="text-secondary font-label font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our Expertise</span>
+        <h2 class="font-headline text-4xl md:text-5xl text-primary">Crafting Signature Interiors<br/><span class="italic font-normal">Across Winnipeg.</span></h2>
+      </div>
+      <a href="services.html" class="text-secondary font-label font-bold tracking-widest uppercase text-xs hover:underline decoration-secondary/30 whitespace-nowrap">Explore All Services →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+      <!-- Kitchen -->
+      <div class="group bg-surface-container-lowest p-4 transition-all duration-500 hover:-translate-y-2 ambient-shadow">
+        <div class="aspect-[4/5] mb-6 overflow-hidden rounded gallery-item">
+          <img class="gallery-img w-full h-full object-cover" src="images/kitchen-gas-range.jpg" alt="Luxury kitchen renovation Winnipeg with custom cabinetry and quartz countertops" loading="lazy"/>
+        </div>
+        <span class="inline-block px-3 py-1 bg-surface-container-high text-secondary text-[10px] font-label font-bold tracking-widest uppercase rounded-full mb-3">Kitchen</span>
+        <h3 class="font-headline text-xl text-primary mb-2">Kitchen Renovations</h3>
+        <p class="text-sm text-on-surface-variant font-light mb-5 leading-relaxed">Culinary spaces engineered for performance and elevated with bespoke artisan finishes.</p>
+        <a href="services.html#kitchens" class="text-xs font-label font-bold tracking-wider text-secondary group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">LEARN MORE <span>→</span></a>
+      </div>
+
+      <!-- Bathroom -->
+      <div class="group bg-surface-container-lowest p-4 transition-all duration-500 hover:-translate-y-2 ambient-shadow md:mt-10">
+        <div class="aspect-[4/5] mb-6 overflow-hidden rounded gallery-item">
+          <img class="gallery-img w-full h-full object-cover" src="images/bathroom-encaustic.jpg" alt="Luxury bathroom renovation Winnipeg — designer encaustic tile shower" loading="lazy"/>
+        </div>
+        <span class="inline-block px-3 py-1 bg-surface-container-high text-secondary text-[10px] font-label font-bold tracking-widest uppercase rounded-full mb-3">Bathroom</span>
+        <h3 class="font-headline text-xl text-primary mb-2">Bathroom Renovations</h3>
+        <p class="text-sm text-on-surface-variant font-light mb-5 leading-relaxed">Serene spa retreats defined by premium textures, natural stone, and precision lighting.</p>
+        <a href="services.html#bathrooms" class="text-xs font-label font-bold tracking-wider text-secondary group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">LEARN MORE <span>→</span></a>
+      </div>
+
+      <!-- Basement -->
+      <div class="group bg-surface-container-lowest p-4 transition-all duration-500 hover:-translate-y-2 ambient-shadow">
+        <div class="aspect-[4/5] mb-6 overflow-hidden rounded gallery-item">
+          <img class="gallery-img w-full h-full object-cover" src="images/kitchen-hexagon-splash.jpg" alt="Professional basement finishing Winnipeg — custom bar and entertainment space" loading="lazy"/>
+        </div>
+        <span class="inline-block px-3 py-1 bg-surface-container-high text-secondary text-[10px] font-label font-bold tracking-widest uppercase rounded-full mb-3">Basement</span>
+        <h3 class="font-headline text-xl text-primary mb-2">Basement Finishing</h3>
+        <p class="text-sm text-on-surface-variant font-light mb-5 leading-relaxed">Transforming unused space into curated living, entertainment, and wellness retreats.</p>
+        <a href="services.html#basements" class="text-xs font-label font-bold tracking-wider text-secondary group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">LEARN MORE <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ RENOVATION JOURNEY ═══ -->
+<section class="py-28 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+      <span class="text-secondary font-label font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Process</span>
+      <h2 class="font-headline text-4xl md:text-5xl text-primary">Your Renovation Journey</h2>
+      <p class="text-on-surface-variant mt-4 leading-relaxed">Three carefully curated stages — designed to make a complex transformation feel effortless.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 reveal">
+      <!-- Step 1 -->
+      <div class="flex flex-col">
+        <div class="step-num mb-4">01</div>
+        <div class="h-px w-12 bg-secondary mb-6"></div>
+        <h3 class="font-headline text-2xl text-primary mb-4">Free Consultation</h3>
+        <p class="text-on-surface-variant font-light leading-relaxed text-sm">We meet at your Winnipeg home, listen to your vision, assess your space, and build a bespoke renovation brief — with no obligations and no pressure.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-base">calendar_today</span>
+          <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Schedule within 48 hours</span>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="flex flex-col lg:pt-12">
+        <div class="step-num mb-4">02</div>
+        <div class="h-px w-12 bg-secondary mb-6"></div>
+        <h3 class="font-headline text-2xl text-primary mb-4">Design & Planning</h3>
+        <p class="text-on-surface-variant font-light leading-relaxed text-sm">Our designers translate your vision into precision blueprints and 3D renders. You approve every material, finish, and fixture before a single nail is driven.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-base">draw</span>
+          <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Fixed-price contract included</span>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="flex flex-col">
+        <div class="step-num mb-4">03</div>
+        <div class="h-px w-12 bg-secondary mb-6"></div>
+        <h3 class="font-headline text-2xl text-primary mb-4">Build & Completion</h3>
+        <p class="text-on-surface-variant font-light leading-relaxed text-sm">Our master craftsmen execute with precision. We protect your home, respect your timeline, and hand over a space that exceeds your expectations.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-base">verified</span>
+          <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">2-year workmanship warranty</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 text-center reveal">
+      <a href="quote.html" class="inline-flex items-center gap-3 bg-primary-gradient text-on-primary px-10 py-4 rounded font-label font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">
+        Start Your Journey
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TESTIMONIALS ═══ -->
+<section class="py-28 bg-primary text-on-primary">
+  <div class="max-w-5xl mx-auto px-6 md:px-8">
+    <div class="flex flex-col items-center text-center reveal">
+      <span class="material-symbols-outlined text-5xl text-secondary mb-10" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48;">format_quote</span>
+      <blockquote class="font-headline text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-12 max-w-3xl italic font-normal">
+        "GT PRO transformed our dated 1990s Charleswood home into a magazine-worthy space. Their attention to material transitions and the honesty of their pricing made us comfortable throughout a $180,000 project."
+      </blockquote>
+      <div class="flex flex-col items-center">
+        <div class="w-14 h-14 bg-surface-container-high rounded-full mb-4 overflow-hidden flex items-center justify-center">
+          <span class="font-headline text-primary text-xl font-bold">RK</span>
+        </div>
+        <cite class="not-italic font-label font-bold tracking-widest uppercase text-xs text-on-primary-container">Robert & Karen M. | Charleswood, Winnipeg</cite>
+      </div>
+    </div>
+
+    <!-- Three mini testimonials -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 reveal">
+      <div class="border border-white/10 p-6 rounded">
+        <div class="flex gap-1 mb-4">
+          <span class="text-secondary text-sm">★★★★★</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed font-light">"Our basement went from storage nightmare to a stunning family room. On time, on budget — exceptional."</p>
+        <p class="mt-4 font-label text-xs uppercase tracking-widest text-secondary/80">— D. Friesen, River Heights</p>
+      </div>
+      <div class="border border-white/10 p-6 rounded">
+        <div class="flex gap-1 mb-4">
+          <span class="text-secondary text-sm">★★★★★</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed font-light">"The kitchen renovation exceeded every expectation. The marble island alone gets compliments from every guest."</p>
+        <p class="mt-4 font-label text-xs uppercase tracking-widest text-secondary/80">— S. Loewen, Tuxedo</p>
+      </div>
+      <div class="border border-white/10 p-6 rounded">
+        <div class="flex gap-1 mb-4">
+          <span class="text-secondary text-sm">★★★★★</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed font-light">"Professional, communicative, and meticulous. GT PRO treated our home like it was their own."</p>
+        <p class="mt-4 font-label text-xs uppercase tracking-widest text-secondary/80">— A. Thiessen, Bridgwater</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FINAL CTA ═══ -->
+<section class="py-28 bg-surface-container-low">
+  <div class="max-w-4xl mx-auto px-6 md:px-8 text-center reveal">
+    <span class="text-secondary font-label font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Winnipeg's Trusted Renovation Studio</span>
+    <h2 class="font-headline text-4xl md:text-5xl text-primary mb-6">Ready to Reimagine<br/><span class="italic font-normal">Your Space?</span></h2>
+    <p class="text-on-surface-variant mb-12 text-lg leading-relaxed max-w-xl mx-auto">Schedule your free consultation and receive a detailed, no-obligation quote within 72 hours.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="quote.html" class="bg-primary-gradient text-on-primary px-12 py-5 rounded font-label font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all ambient-shadow">
+        Get Your Free Quote
+      </a>
+      <a href="tel:+12049904426" class="border border-secondary/30 text-secondary px-12 py-5 rounded font-label font-bold tracking-widest uppercase text-sm hover:bg-surface-container transition-colors">
+        Call (204) 990-4426
+      </a>
+    </div>
+    <p class="text-on-surface-variant text-xs mt-8 font-label uppercase tracking-widest">Serving all of Winnipeg & surrounding Manitoba communities</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════ FOOTER ═══ -->
+<footer class="bg-primary text-on-primary border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="md:col-span-1">
+      <div class="flex items-center gap-2 mb-4">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="flex-shrink-0" style="color:#735a3a"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="font-headline font-bold text-xl uppercase tracking-tighter">GT PRO</span>
+      </div>
+      <p class="text-on-primary-container text-sm leading-relaxed font-light">Winnipeg's luxury interior renovation studio — precision craft for the discerning homeowner.</p>
+      <p class="text-on-primary-container text-xs mt-6 font-label">© 2011 GT PRO Enterprises</p>
+    </div>
+    <div>
+      <h4 class="text-xs font-label font-bold uppercase tracking-widest text-secondary mb-4">Services</h4>
+      <ul class="space-y-2 text-sm text-on-primary-container font-light">
+        <li><a href="services.html#kitchens" class="hover:text-white transition-colors">Kitchen Renovations</a></li>
+        <li><a href="services.html#bathrooms" class="hover:text-white transition-colors">Bathroom Renovations</a></li>
+        <li><a href="services.html#basements" class="hover:text-white transition-colors">Basement Finishing</a></li>
+        <li><a href="services.html#full" class="hover:text-white transition-colors">Full Home Remodels</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-xs font-label font-bold uppercase tracking-widest text-secondary mb-4">Company</h4>
+      <ul class="space-y-2 text-sm text-on-primary-container font-light">
+        <li><a href="about.html" class="hover:text-white transition-colors">About GT PRO</a></li>
+        <li><a href="gallery.html" class="hover:text-white transition-colors">Project Gallery</a></li>
+        <li><a href="quote.html" class="hover:text-white transition-colors">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-xs font-label font-bold uppercase tracking-widest text-secondary mb-4">Connect</h4>
+      <ul class="space-y-3 text-sm text-on-primary-container font-light">
+        <li class="flex items-start gap-2">
+          <span class="material-symbols-outlined text-base text-secondary mt-0.5">location_on</span>
+          Winnipeg, Manitoba, Canada
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="material-symbols-outlined text-base text-secondary mt-0.5">call</span>
+          <a href="tel:+12049904426" class="hover:text-white transition-colors">(204) 990-4426</a>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="material-symbols-outlined text-base text-secondary mt-0.5">mail</span>
+          <a href="mailto:tavaracci@gmail.com" class="hover:text-white transition-colors">tavaracci@gmail.com</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ MOBILE STICKY NAV ═══ -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest pb-safe shadow-[0_-4px_30px_rgba(0,0,0,0.08)] border-t border-outline-variant/20">
+  <div class="grid grid-cols-2 divide-x divide-outline-variant/20">
+    <a href="tel:+12049904426" class="flex items-center justify-center gap-2 py-4 text-primary font-label font-bold text-xs uppercase tracking-widest active:bg-surface-container transition-colors">
+      <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">call</span>
+      Call Now
+    </a>
+    <a href="quote.html" class="flex items-center justify-center gap-2 py-4 bg-primary-gradient text-white font-label font-bold text-xs uppercase tracking-widest active:opacity-90 transition-opacity">
+      <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">request_quote</span>
+      Get a Quote
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.classList.contains('hidden') &&
+        !mobileMenu.contains(e.target) &&
+        !mobileMenuBtn.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+</script>
+</body>
+</html>
