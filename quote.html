@@ -226,6 +226,10 @@
       <!-- FORM COLUMN -->
       <div class="lg:col-span-7 space-y-6">
       <form action="https://formspree.io/f/mzdkvodr" method="POST" class="bg-surface-container-lowest p-8 md:p-12 rounded-lg ambient-shadow">
+        <input type="hidden" name="service" id="service_hidden"/>
+        <input type="hidden" name="timeline" id="timeline_hidden"/>
+        <input type="hidden" name="_subject" value="New Quote Request — GT PRO ENTERPRISES"/>
+        <input type="hidden" name="_next" value="https://formspree.io/thanks"/>
 
         <!-- Step Progress -->
         <div class="flex items-center gap-3 mb-10">
@@ -260,7 +264,7 @@
               <p class="font-label text-xs font-bold uppercase tracking-widest service-label text-primary">Full Home</p>
             </div>
           </div>
-          <button class="w-full bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(2)">
+          <button type="button" class="w-full bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(2)">
             Continue <span class="material-symbols-outlined text-sm">arrow_forward</span>
           </button>
         </div>
@@ -299,10 +303,10 @@
             </div>
           </div>
           <div class="flex gap-4">
-            <button class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(1)">
+            <button type="button" class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(1)">
               ← Back
             </button>
-            <button class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(3)">
+            <button type="button" class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(3)">
               Continue <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </button>
           </div>
@@ -334,10 +338,10 @@
             </div>
           </div>
           <div class="flex gap-4">
-            <button class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(2)">
+            <button type="button" class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(2)">
               ← Back
             </button>
-            <button class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(4)">
+            <button type="button" class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="nextStep(4)">
               Continue <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </button>
           </div>
@@ -350,7 +354,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="stitch-label" for="firstName">First Name</label>
-                <input type="text" class="stitch-input" placeholder="First name" id="firstName" name="first_name"/>
+                <input type="text" class="stitch-input" placeholder="First name" id="firstName" name="first_name" required/>
               </div>
               <div>
                 <label class="stitch-label" for="lastName">Last Name</label>
@@ -359,7 +363,7 @@
             </div>
             <div>
               <label class="stitch-label" for="email">Email Address</label>
-              <input type="email" class="stitch-input" placeholder="you@email.com" id="email" name="email"/>
+              <input type="email" class="stitch-input" placeholder="you@email.com" id="email" name="email" required/>
             </div>
             <div>
               <label class="stitch-label" for="phone">Phone Number</label>
@@ -382,10 +386,10 @@
           </div>
           <p class="text-xs text-on-surface-variant font-light mb-6">By submitting, you agree to be contacted by GT PRO ENTERPRISES. We never share your information.</p>
           <div class="flex gap-4">
-            <button class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(3)">
+            <button type="button" class="flex-1 border border-outline-variant/40 text-on-surface-variant py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all" onclick="nextStep(3)">
               ← Back
             </button>
-            <button class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="submitForm()">
+            <button type="submit" class="flex-1 bg-primary-gradient text-on-primary py-4 rounded font-label font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2">
               Send My Request <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">send</span>
             </button>
           </div>
@@ -592,81 +596,14 @@
   }
 
   function selectService(el) {
-    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('#step1 .service-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
+    document.getElementById('service_hidden').value = el.querySelector('p')?.textContent?.trim() || el.dataset.service;
   }
   function selectTimeline(el) {
     document.querySelectorAll('#step2 .service-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-  }
-
-  async function submitForm() {
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName  = document.getElementById('lastName').value.trim();
-    const email     = document.getElementById('email').value.trim();
-    const phone     = document.getElementById('phone').value.trim();
-    if (!firstName || !email) {
-      alert('Please fill in your name and email to continue.');
-      return;
-    }
-
-    // Collect all form data
-    const serviceEl  = document.querySelector('#step1 .service-card.selected');
-    const timelineEl = document.querySelector('#step2 .service-card.selected');
-    const budget     = '$' + parseInt(document.getElementById('budgetSlider').value).toLocaleString();
-    const hood       = document.getElementById('neighbourhood')?.value || '';
-    const desc       = document.getElementById('description')?.value || '';
-    const referral   = document.getElementById('referral')?.value || '';
-    const contactPref = document.querySelector('input[name="contact"]:checked')?.value || '';
-
-    const payload = {
-      name:         `${firstName} ${lastName}`,
-      email:        email,
-      phone:        phone,
-      service:      serviceEl  ? serviceEl.querySelector('h3,p')?.textContent?.trim() : 'Not selected',
-      timeline:     timelineEl ? timelineEl.querySelector('p')?.textContent?.trim()  : 'Not selected',
-      budget:       budget,
-      neighbourhood: hood,
-      description:  desc,
-      referral:     referral,
-      contact_pref: contactPref,
-      _subject:     `New Quote Request from ${firstName} ${lastName} — GT PRO ENTERPRISES`,
-    };
-
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzdkvodr';
-
-    const submitBtn = document.querySelector('#step4 button:last-child');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        // Success — show confirmation screen
-        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-        for (let i = 1; i <= 4; i++) {
-          document.getElementById('dot' + i).classList.remove('active');
-          document.getElementById('dot' + i).classList.add('done');
-        }
-        document.getElementById('stepLabel').textContent = 'Request Submitted!';
-        document.getElementById('successState').classList.add('show');
-      } else {
-        const data = await res.json();
-        alert('There was a problem sending your request. Please email us directly at tavaracci@gmail.com');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send My Request <span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;">send</span>';
-      }
-    } catch(err) {
-      // Network error fallback
-      alert('Could not connect. Please email us directly at tavaracci@gmail.com or call (204) 990-4426.');
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Send My Request <span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;">send</span>';
-    }
+    document.getElementById('timeline_hidden').value = el.querySelector('p')?.textContent?.trim() || '';
   }
 </script>
 </body>
