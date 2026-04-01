@@ -225,7 +225,7 @@
 
       <!-- FORM COLUMN -->
       <div class="lg:col-span-7 space-y-6">
-      <div class="bg-surface-container-lowest p-8 md:p-12 rounded-lg ambient-shadow">
+      <form action="https://formspree.io/f/mzdkvodr" method="POST" class="bg-surface-container-lowest p-8 md:p-12 rounded-lg ambient-shadow">
 
         <!-- Step Progress -->
         <div class="flex items-center gap-3 mb-10">
@@ -274,7 +274,7 @@
               <span class="font-headline text-2xl text-primary" id="budgetDisplay">$25,000</span>
               <span class="font-label text-xs text-on-surface-variant uppercase tracking-widest">CAD</span>
             </div>
-            <input type="range" min="0" max="200000" step="2500" value="25000" id="budgetSlider"
+            <input type="range" min="0" max="200000" step="2500" value="25000" id="budgetSlider" name="budget"
               oninput="document.getElementById('budgetDisplay').textContent = '$' + parseInt(this.value).toLocaleString()"
               class="w-full"/>
             <div class="flex justify-between text-xs font-label text-on-surface-variant mt-2">
@@ -314,15 +314,15 @@
           <div class="space-y-6 mb-8">
             <div>
               <label class="stitch-label" for="neighbourhood">Winnipeg Neighbourhood / Area</label>
-              <input type="text" class="stitch-input" placeholder="e.g. Charleswood, Tuxedo, River Heights…" id="neighbourhood"/>
+              <input type="text" class="stitch-input" placeholder="e.g. Charleswood, Tuxedo, River Heights…" id="neighbourhood" name="neighbourhood"/>
             </div>
             <div>
               <label class="stitch-label" for="description">Describe Your Vision</label>
-              <textarea class="stitch-input resize-none" rows="4" placeholder="Share your goals, inspiration, or any specific requirements…" id="description"></textarea>
+              <textarea class="stitch-input resize-none" rows="4" placeholder="Share your goals, inspiration, or any specific requirements…" id="description" name="description"></textarea>
             </div>
             <div>
               <label class="stitch-label" for="referral">How did you hear about GT PRO ENTERPRISES?</label>
-              <select class="stitch-input" id="referral">
+              <select class="stitch-input" id="referral" name="referral">
                 <option value="">Select one…</option>
                 <option>Google Search</option>
                 <option>Friend / Family Referral</option>
@@ -350,20 +350,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="stitch-label" for="firstName">First Name</label>
-                <input type="text" class="stitch-input" placeholder="First name" id="firstName"/>
+                <input type="text" class="stitch-input" placeholder="First name" id="firstName" name="first_name"/>
               </div>
               <div>
                 <label class="stitch-label" for="lastName">Last Name</label>
-                <input type="text" class="stitch-input" placeholder="Last name" id="lastName"/>
+                <input type="text" class="stitch-input" placeholder="Last name" id="lastName" name="last_name"/>
               </div>
             </div>
             <div>
               <label class="stitch-label" for="email">Email Address</label>
-              <input type="email" class="stitch-input" placeholder="you@email.com" id="email"/>
+              <input type="email" class="stitch-input" placeholder="you@email.com" id="email" name="email"/>
             </div>
             <div>
               <label class="stitch-label" for="phone">Phone Number</label>
-              <input type="tel" class="stitch-input" placeholder="(204) 000-0000" id="phone"/>
+              <input type="tel" class="stitch-input" placeholder="(204) 000-0000" id="phone" name="phone"/>
             </div>
             <div>
               <label class="stitch-label">Preferred Contact Method</label>
@@ -422,7 +422,7 @@
           </a>
         </div>
 
-      </div><!-- /form card -->
+      </form><!-- /form card -->
 
       </div><!-- /left col wrapper -->
 
@@ -633,9 +633,7 @@
       _subject:     `New Quote Request from ${firstName} ${lastName} — GT PRO ENTERPRISES`,
     };
 
-    // Submit to Formspree — replace YOUR_FORM_ID with the ID from formspree.io
-    // Sign up free at https://formspree.io → New Form → copy the 8-char ID
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzdkvodr';
 
     const submitBtn = document.querySelector('#step4 button:last-child');
     submitBtn.disabled = true;
